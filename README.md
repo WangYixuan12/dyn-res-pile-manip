@@ -2,7 +2,7 @@
 
 [Website](https://robopil.github.io/dyn-res-pile-manip/) | [Paper](https://arxiv.org)
 
-https://github.com/WangYixuan12/dyn-res-pile-manip/assets/32333199/f998648e-9e7b-4825-b505-31e4ee6a684c
+https://github.com/WangYixuan12/dyn-res-pile-manip/assets/32333199/60ad64d4-78f2-4654-bb2d-25599b9b66f4
 
 Dynamic-Resolution Model Learning for Object Pile Manipulation  
 [Yixuan Wang*](https://wangyixuan12.github.io/), [Yunzhu Li*](https://yunzhuli.github.io/), [Katherine Driggs-Campbell](https://krdc.web.illinois.edu/), [Li Fei-Fei](https://profiles.stanford.edu/fei-fei-li/), [Jiajun Wu](http://jiajunwu.com/)  
