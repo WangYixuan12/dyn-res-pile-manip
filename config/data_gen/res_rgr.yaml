@@ -1,0 +1,56 @@
+dataset:
+  init_pos: 'spread'
+  # initialization options:
+  # - 'spread': deterministic spreaded object pile
+  # - 'rand_blob': random blob-shape object pile
+  # - 'rand_spread': random spreaded object pile
+  # - 'rand_sparse_spread': random sparse spreaded object pile
+  global_scale: 24
+  obj: "carrots"
+  particle_r: 0.125
+  cam_idx: 0
+  wkspc_w: 5.0
+  headless: True
+  cont_motion: False
+  robot_type: 'franka' # kinova; franka
+
+train:
+  n_history: 1
+  n_rollout: 5
+  particle:
+    nf_effect: 64
+    adj_thresh: 0.08
+    add_delta: False
+
+mpc:
+  sigma: 0.3
+  model_folder: "2023-01-28-10-42-05-114323" # unifying density [15., 6500.]
+  iter_num: 1000
+
+  mppi: # model predictive path integral
+    beta_filter: 0.7
+    reward_weight: 0.1
+
+  gd:   # gradient descent
+    beta_filter: 0.7
+    lr: 0.05
+
+  # MPC param
+  n_mpc: 1
+  n_mpc_per_model: 1
+  n_look_ahead: 1
+  n_sample: 20 # 100 on server!
+  n_update_iter: 200
+  gd_loop: 1
+  mpc_type: 'GD'
+  time_lim: 1000 # unit: ms per step
+
+mpc_data:
+  folder: "data/res_rgr_data_same_init"
+  num_scene: 2
+  mode: "same_init" # random, same_init, same_goal
+  record_data: False
+  gp:
+    length: 1.0
+    nu: 2.5
+    noise: 0.2

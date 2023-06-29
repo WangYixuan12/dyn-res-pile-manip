@@ -1,0 +1,55 @@
+dataset:
+  folder: "data/gnn_dyn_data_custom" # gen_data
+  init_pos: 'spread'
+  # initialization options:
+  # - 'spread': deterministic spreaded object pile
+  # - 'rand_blob': random blob-shape object pile
+  # - 'rand_spread': random spreaded object pile
+  # - 'rand_sparse_spread': random sparse spreaded object pile
+  global_scale: 24
+  obj: "carrots"
+  particle_r: 0.125
+  cam_idx: 0
+  wkspc_w: 5.0
+  headless: True
+  cont_motion: False
+  robot_type: 'franka' # kinova; franka
+
+train:
+  particle:
+    nf_effect: 64
+    resume:
+      active: False
+      epoch: 0
+      iter: 0
+      folder: 'None'
+    adj_thresh: 0.08
+    add_delta: False
+
+train_res_cls:
+  model_type: "regressor" # "classifier" or "regressor"
+  random_seed: 42
+  # data_root: "data/res_rgr_data" # 1433
+  data_root: "data/res_rgr_data_small" # 30
+  num_data: 30
+  train_valid_ratio: 0.9
+  state_h: 224
+  state_w: 224
+  res_dim: 6
+  batch_size: 16
+  num_worker: 10
+  n_epoch: 2000
+  adam_beta1: 0.9
+  lr: 0.00001
+  lr_scheduler:
+    type: "StepLR"
+    enabled: True
+    step_size: 1000 # epochs
+    gamma: 0.1 # reduce LR by this factor
+    factor: 0.1 # ReduceLROnPlateau
+    patience: 10 # ReduceLROnPlateau
+    threshold_mode: 'rel' # ReduceLROnPlateau
+    cooldown: 0 # ReduceLROnPlateau
+  lam_reg: 2e-4
+  log_per_iter: 50
+  ckp_per_iter: 1000

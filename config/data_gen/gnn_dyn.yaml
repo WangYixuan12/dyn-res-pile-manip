@@ -1,0 +1,19 @@
+dataset:
+  folder: "data/gnn_dyn_data_custom" # gen_data
+  init_pos: 'spread'
+  # initialization options:
+  # - 'spread': deterministic spreaded object pile
+  # - 'rand_blob': random blob-shape object pile
+  # - 'rand_spread': random spreaded object pile
+  # - 'rand_sparse_spread': random sparse spreaded object pile
+  global_scale: 24
+  n_episode: 2000
+  n_timestep: 10
+  obj: "carrots"
+  particle_r: 0.125
+  cam_idx: 0
+  num_worker: 1
+  wkspc_w: 5.0
+  headless: True
+  cont_motion: False
+  robot_type: 'franka' # kinova; franka

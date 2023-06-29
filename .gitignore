@@ -1,0 +1,13 @@
+*.avi
+data/
+build/
+dist/
+*.egg-info
+*.png
+*.so
+*.prof
+*.profile
+*.mp4
+*.zip
+__pycache__/
+

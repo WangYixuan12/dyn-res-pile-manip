@@ -1,0 +1,98 @@
+dataset:
+  init_pos: 'rand_spread'
+  # initialization options:
+  # - 'rand_blob': random blob-shape object pile
+  # - 'rand_spread': random spreaded object pile
+  # - 'rand_sparse_spread': random sparse spreaded object pile
+  global_scale: 24 # 12 (ball, coffee); 24 (carrots, capsule)
+  obj: "carrots" # "coffee"; "ball"; "capsule"; "carrots"; "coffee_capsule"
+  particle_r: 0.125 # control the particle size of underlying simulation
+  cam_idx: 0
+  num_worker: 1
+  wkspc_w: 5.0 # 2.5 (coffee, ball); 5.0 (carrots, capsule)
+  headless: False
+  cont_motion: False # whether the robot action is continuous
+  robot_type: 'franka' # kinova; franka
+
+mpc:
+  sigma: 0.3
+  model_folder: "2023-01-28-10-42-05-114323" # unifying density [15., 6500.]
+  iter_num: 1000
+
+  mppi: # model predictive path integral
+  #   n_update_iter_init: 200   # optimization steps for the first update ~ planning
+  #   n_update_iter: 200         # optimization steps for the subsequent updates
+    beta_filter: 0.7
+    reward_weight: 0.1
+
+  # cem:  # cross entropy method
+
+  gd:   # gradient descent
+  #   n_update_iter_init: 100    # optimization steps for the first update ~ planning
+  #   n_update_iter: 100         # optimization steps for the subsequent updates
+    beta_filter: 0.7
+    lr: 0.05
+
+  # MPC param
+  n_mpc: 20
+  n_look_ahead: 1
+  n_sample: 50 # 100 on server!
+  n_update_iter: 200
+  gd_loop: 1
+  mpc_type: 'GD'
+  time_lim: 2000 # unit: ms per step
+  task:
+    type: 'target_shape' # 'target_control'; 'target_shape'
+    # target_control: push objects to [goal_row, goal_col] with radius goal_r
+    # e.g. (500, 140, 50); (360, 360, 100)
+    # target_shape: push objects to target_char
+    goal_row: 360
+    goal_col: 360
+    goal_r: 75
+    target_char: 'I'
+  res_sel:
+    active: True
+    model_folder: '2023-01-30-16-17-30-292500' # data_gp_param_0130; MSELoss; -1
+    iter_num: -1
+
+train_res_cls:
+  model_type: "classifier" # "classifier" or "regressor"
+  random_seed: 42
+  # data_root: "data_gp_param_0130/all" # 1433
+  data_root: "data_cnn_res_rand" # 2760
+  # data_root: "data_cnn_res_same_init" # 20
+  num_data: 2760
+  train_valid_ratio: 0.9
+  state_h: 224
+  state_w: 224
+  res_dim: 6
+  batch_size: 16
+  num_worker: 10
+  n_epoch: 2000
+  adam_beta1: 0.9
+  lr: 0.00001
+  lr_scheduler:
+    type: "StepLR"
+    enabled: True
+    step_size: 1000 # epochs
+    gamma: 0.1 # reduce LR by this factor
+    factor: 0.1 # ReduceLROnPlateau
+    patience: 10 # ReduceLROnPlateau
+    threshold_mode: 'rel' # ReduceLROnPlateau
+    cooldown: 0 # ReduceLROnPlateau
+  lam_reg: 2e-4
+  log_per_iter: 50
+  ckp_per_iter: 1000
+
+train:
+  n_history: 1
+  n_rollout: 5
+  particle:
+    nf_effect: 64
+    resume:
+      active: False
+      epoch: 0
+      iter: 0
+      folder: 'None'
+    adj_thresh: 0.08
+    add_delta: False
