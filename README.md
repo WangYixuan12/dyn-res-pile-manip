@@ -8,8 +8,6 @@ Dynamic-Resolution Model Learning for Object Pile Manipulation
 [Yixuan Wang*](https://wangyixuan12.github.io/), [Yunzhu Li*](https://yunzhuli.github.io/), [Katherine Driggs-Campbell](https://krdc.web.illinois.edu/), [Li Fei-Fei](https://profiles.stanford.edu/fei-fei-li/), [Jiajun Wu](http://jiajunwu.com/)  
 Robotics: Science and Systems, 2023.
 
-## TODO
-
 ## Citation
 
 If you use this code for your research, please cite:
