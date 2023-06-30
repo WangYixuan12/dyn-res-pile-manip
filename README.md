@@ -1,6 +1,6 @@
 # Dynamic-Resolution Model Learning for Object Pile Manipulation
 
-[Website](https://robopil.github.io/dyn-res-pile-manip/) | [Paper](https://arxiv.org)
+[Website](https://robopil.github.io/dyn-res-pile-manip/) | [Paper](https://arxiv.org/abs/2306.16700)
 
 https://github.com/WangYixuan12/dyn-res-pile-manip/assets/32333199/f998648e-9e7b-4825-b505-31e4ee6a684c
 
@@ -10,8 +10,6 @@ Robotics: Science and Systems, 2023.
 
 ## TODO
 
-- [ ] wait for arXiv - update web / README / bib / twitter thread
-
 ## Citation
 
 If you use this code for your research, please cite:
@@ -20,7 +18,7 @@ If you use this code for your research, please cite:
 @article{wang2023dynamic,
   title={Dynamic-Resolution Model Learning for Object Pile Manipulation}, 
   author={Wang, Yixuan and Li, Yunzhu and Driggs-Campbell, Katherine and Fei-Fei, Li and Wu, Jiajun},
-  journal={Robotics: Science and Systems},
+  journal={arXiv preprint arXiv:2306.16700},
   year={2023},
 }
 @inproceedings{li2018learning,
