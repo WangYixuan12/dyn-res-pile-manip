@@ -980,7 +980,7 @@ class FlexEnv(gym.Env):
         particle_den_seq = []
         if auto_particle_r:
             res_rgr_folder = self.config['mpc']['res_sel']['model_folder']
-            res_rgr_folder = os.path.join('data/res_regressor', res_rgr_folder)
+            res_rgr_folder = os.path.join('data/res_rgr_model', res_rgr_folder)
             res_rgr = MPCResRgrNoPool(self.config)
             # res_rgr = MPCResCls(self.config)
             if self.config['mpc']['res_sel']['iter_num'] == -1:
