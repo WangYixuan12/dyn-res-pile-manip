@@ -31,7 +31,7 @@ def main():
 
     task_type = config['mpc']['task']['type']
 
-    model_root = 'data/gnn_dyn/'
+    model_root = 'data/gnn_dyn_model/'
     model_folder = os.path.join(model_root, model_folder)
     GNN_single_model = PropNetDiffDenModel(config, True)
     if model_iter == -1:
