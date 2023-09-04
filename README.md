@@ -13,12 +13,15 @@ Robotics: Science and Systems, 2023.
 If you use this code for your research, please cite:
 
 ```
-@article{wang2023dynamic,
-  title={Dynamic-Resolution Model Learning for Object Pile Manipulation}, 
-  author={Wang, Yixuan and Li, Yunzhu and Driggs-Campbell, Katherine and Fei-Fei, Li and Wu, Jiajun},
-  journal={arXiv preprint arXiv:2306.16700},
-  year={2023},
-}
+@INPROCEEDINGS{Wang-RSS-23, 
+    AUTHOR    = {Yixuan Wang AND Yunzhu Li AND Katherine Driggs-Campbell AND Li Fei-Fei AND Jiajun Wu}, 
+    TITLE     = {{Dynamic-Resolution Model Learning for Object Pile Manipulation}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2023}, 
+    ADDRESS   = {Daegu, Republic of Korea}, 
+    MONTH     = {July}, 
+    DOI       = {10.15607/RSS.2023.XIX.047} 
+} 
 @inproceedings{li2018learning,
     Title={Learning Particle Dynamics for Manipulating Rigid Bodies, Deformable Objects, and Fluids},
     Author={Li, Yunzhu and Wu, Jiajun and Tedrake, Russ and Tenenbaum, Joshua B and Torralba, Antonio},
