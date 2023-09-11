@@ -1,5 +1,5 @@
 *.avi
-data/
+data/*
 build/
 dist/
 *.egg-info
