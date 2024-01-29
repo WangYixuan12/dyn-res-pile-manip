@@ -42,7 +42,7 @@ If you use this code for your research, please cite:
 `conda env create -f env.yaml && conda activate dyn-res-pile-manip`
 
 ### Install PyFleX
-Run `bash install_pyflex.sh`. You may need to `source ~/.bashrc` to `import PyFleX`.  
+Run `bash scripts/install_pyflex.sh`. You may need to `source ~/.bashrc` to `import PyFleX`.  
 <details>
 <summary>What does this script do?</summary>
 
