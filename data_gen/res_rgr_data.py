@@ -4,7 +4,7 @@ import torch
 import cv2
 
 import numpy as np
-np.int = np.int64 # work around for issue https://github.com/scikit-optimize/scikit-optimize/issues/1171
+int = np.int64 # work around for issue https://github.com/scikit-optimize/scikit-optimize/issues/1171
 import matplotlib.pyplot as plt
 from skopt.plots import plot_gaussian_process
 from skopt import gp_minimize, gbrt_minimize
