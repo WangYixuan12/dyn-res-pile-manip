@@ -92,22 +92,41 @@ Run `bash scripts/custom_robot_model.sh`
 <details>
 <summary>What does this script do?</summary>
 
-Since we use custom end-effector for our robot, please add our custom [`kinova`](https://drive.google.com/file/d/1JLa-NBbyTHhLm_-dkt06bdjxqvx6a_Y7/view?usp=sharing) and [`franka_panda`](https://drive.google.com/file/d/1H5aNJ-z7YuBkjlFJODgk3szdHv6DAGY-/view?usp=drive_link) to `pybullet_data` folder.
+The script downloads `kinova.zip` and `franka_panda.zip` from the [release files](https://drive.google.com/drive/folders/1oKzLY3GzqPzv0FmGd_ipoLnz_rC7Ct5_) and extracts the custom end-effectors into the active Python environment's `pybullet_data` folder.
 </details>
 
 ## Download data and model
 
-If you want to visualize awesome object pile manipulation: download model by running `bash scripts/download_model.sh`  
-If you want to train my own dynamics model and resolution regressor: download data by running `bash scripts/download_data.sh`  
-All dataset and model will be stored under `data` folder.
-<details>
-<summary>More about data downloading</summary>
+The original release files are available in this [Google Drive folder](https://drive.google.com/drive/folders/1oKzLY3GzqPzv0FmGd_ipoLnz_rC7Ct5_). File IDs and SHA-256 checksums are recorded in [`scripts/download_assets.tsv`](scripts/download_assets.tsv).
 
-It will download three datasets. You could choose to download only partial of them according to your needs.
-- `data/res_rgr_data`: data for training resolution regressor
-- `data/res_rgr_data_small`: data for training resolution regressor, but with only 30 data points. It is mainly to sanity check the code
-- `data/gnn_dyn_data`: data for training dynamics
-</details>
+Activate the project conda environment first. The scripts require `gdown` and Python; dataset and robot downloads also require `unzip`. They verify each downloaded file before installing it and store models and datasets under this repository's `data` folder, regardless of the working directory.
+
+```bash
+# Both pretrained checkpoints, ready for visualize_mpc.py:
+bash scripts/download_model.sh
+
+# Dynamics training data only (the default):
+bash scripts/download_data.sh
+
+# Resolution-regressor sanity-check data:
+bash scripts/download_data.sh res_rgr_data_small
+
+# Full resolution-regressor training data:
+bash scripts/download_data.sh res_rgr_data
+
+# All three datasets:
+bash scripts/download_data.sh all
+```
+
+The archives total approximately 22 GB; allow additional space for extraction. Successfully extracted archives are removed. Rerunning a dataset or robot download overwrites matching extracted files; verified checkpoints and any verified archive left by an interrupted extraction are reused.
+
+| Dataset | Extracted training path | Configured training sample count |
+| --- | --- | --- |
+| Dynamics | `data/gnn_dyn_data` | 2,000 episodes |
+| Full resolution regressor | `data/res_rgr_data/all` | 1,433 |
+| Small resolution regressor | `data/res_rgr_data_small` | 30 |
+
+`config/train/res_rgr.yaml` defaults to the small dataset. To train on the full dataset, set `train_res_cls.data_root` to `data/res_rgr_data/all` and `train_res_cls.num_data` to `1433`. The original full and small archives contain 1,434 and 31 numbered directories respectively; the counts above preserve the released training configurations.
 
 ## Task in sim
 

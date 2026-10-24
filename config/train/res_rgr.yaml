@@ -29,7 +29,7 @@ train:
 train_res_cls:
   model_type: "regressor" # "classifier" or "regressor"
   random_seed: 42
-  # data_root: "data/res_rgr_data" # 1433
+  # For the full dataset, set data_root to "data/res_rgr_data/all" and num_data to 1433.
   data_root: "data/res_rgr_data_small" # 30
   num_data: 30
   train_valid_ratio: 0.9
